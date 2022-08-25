@@ -4,9 +4,4 @@
   <% else %>
     <%=link_to 'sign in', new_admin_session_path %>
   <% end %>
-  <div>
-    <% if current_admin %>
-      <%= link_to 'create a product', new_product_path %>
-    <% end %>
-  </div> 
 </nav>

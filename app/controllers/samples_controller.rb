@@ -1,6 +1,11 @@
 class SamplesController < ApplicationController
   before_action :set_sample, only: [:update, :destroy]
   before_action :set_product, only: [:new, :index, :create]
+  before_action :authenticate_admin!
+
+  def new 
+    @sample = Sample.new
+  end
 
   def create
     @sample = @product.samples.build(sample_params)
@@ -32,10 +37,9 @@ class SamplesController < ApplicationController
     
     head :no_content
   end
-
  
   def sample_params
-    params.require(:sample).permit(:image, :product_id)
+    params.require(:sample).permit(:image_data, :product_id)
   end
 
   def set_product
