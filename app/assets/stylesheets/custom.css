@@ -1,0 +1,11 @@
+.button_to {
+  display: inline;
+}
+
+@media(min-width: 700px) {
+  .alert {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}

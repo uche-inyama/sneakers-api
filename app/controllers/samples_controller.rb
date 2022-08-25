@@ -4,24 +4,32 @@ class SamplesController < ApplicationController
 
   def create
     @sample = @product.samples.build(sample_params)
-    if @sample.save
-      render json: @sample
-    else
-      render json: :unprocessable_entity
+    respond_to do |format|
+      if @sample.save
+        format.html { redirect_to products_path, notice: 'sample successfully created.'}
+        format.json { render json: @sample }
+      else
+        format.html { render :new }
+        format.json { render json: :unprocessable_entity }
+      end
     end
   end
 
   def update
-    if @sample.update(sample_params)
-      render json: @sample
-    else
-      render json: :unprocessable_entity
+    respond_to do |format|
+      if @sample.update(sample_params)
+        format.html { redirect_to products_path, notice: 'sample successfully updated.'}
+        format.json { render json: @sample }
+      else
+        format.html { render :new }
+        format.json { render json: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @sample.destroy
-
+    
     head :no_content
   end
 

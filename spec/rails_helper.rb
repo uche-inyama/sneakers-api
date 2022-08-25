@@ -75,6 +75,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include WardenSpecHelper, type: :request
   config.include WardenSpecHelper, type: :feature
+  config.include CreateProductHelper, type: :feature
 
 
   config.before(:suite) do
