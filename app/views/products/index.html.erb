@@ -1,14 +1,11 @@
-<div>
-  <%= link_to 'create a product', new_product_path %>
-</div> 
-<h3>products</h3>
-<table>
-  <tbody>
+<h3 class="table-header">Products</h3>
+<table class="">
+  <tbody class="gfg">
   <tr>
-    <td class="text-center">Name </td>
-    <td class="text-center">Marketing Statement </td>
-    <td class="text-center">Cost Price</td>
-    <td class="text-center">Percentage Discout</td>
+    <th class="text-center">Name</th>
+    <th class="text-center">Marketing Statement </th>
+    <th class="text-center">Cost Price</th>
+    <th class="text-center">Percentage Discout</th>
   <tr>
     <%= render @products %>
   </tbody>
