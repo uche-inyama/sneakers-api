@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     resources :samples, shallow: true
   end
   
-  unauthenticated do
-    root to: "home#index", as: :unauthenticated_root
+  unauthenticated :admin do
+    root "home#index", as: :unauthenticated_root
   end
   
-  authenticated do
-    root to: "products#index"
+  authenticated :admin do
+    root "products#index", as: :authenticated_root
   end
 end

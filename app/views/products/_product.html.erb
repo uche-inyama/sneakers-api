@@ -1,6 +1,9 @@
-<div>
-  <%= product.name %>
-  <%= link_to 'Add samples', new_product_sample_path(product) %>
-  <%= link_to "Edit", edit_product_path(product) %>
-  <%= button_to "Delete", product_path(product), method: :delete, class: "btn btn-primary" %> 
-</div>
+<tr>
+  <td class="text-center"><%= product.name %></td>
+  <td class="text-center"><%= product.marketing_statement %></td>
+  <td class="text-center"><%= product.product_price %></td>
+  <td class="text-center"><%= product.product_discount%></td>
+  <td class="text-center"><%= link_to 'Add samples', new_product_sample_path(product) %></td>
+  <td class="text-center"><%= link_to "Edit", edit_product_path(product) %></td>
+  <td class="text-center"><%= button_to "Delete", product_path(product), method: :delete, class: "btn btn-primary" %></td>
+</tr>

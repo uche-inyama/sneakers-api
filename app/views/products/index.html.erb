@@ -2,4 +2,14 @@
   <%= link_to 'create a product', new_product_path %>
 </div> 
 <h3>products</h3>
-<%= render @products %>
+<table>
+  <tbody>
+  <tr>
+    <td class="text-center">Name </td>
+    <td class="text-center">Marketing Statement </td>
+    <td class="text-center">Cost Price</td>
+    <td class="text-center">Percentage Discout</td>
+  <tr>
+    <%= render @products %>
+  </tbody>
+</table>
