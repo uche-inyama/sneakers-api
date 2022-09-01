@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update, :destroy]
-  before_action :authenticate_admin!
+  before_action :set_product, only: [:edit, :show, :update, :destroy]
   
   def index
     @products = Product.all
@@ -26,6 +25,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    if @product
+      respond_to do |format|
+        format.html 
+        format.json { render json: @product}
+      end
+    end
+  end
+
   def edit
   end
 
@@ -33,7 +41,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.json { render json: @product }
-        format.html { redirect_to products_path }
+        format.html { redirect_to products_path, notice: 'Product successfully updated.' }
       else
         format.json { render json: :unprocessable_entity }
       end

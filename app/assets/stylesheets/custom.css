@@ -16,10 +16,10 @@ form[action="/admins/sign_out"] {
   padding: 20px 10px;
 }
 
-.gfg {
-  border-collapse:separate;
-  border-spacing:0 15px;
+.logo {
+  color: #000;
 }
+
 
 @media(min-width: 700px) {
   .alert {

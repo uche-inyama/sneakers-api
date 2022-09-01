@@ -1,5 +1,7 @@
 <nav class="navigation row">
-  <div class="col-2 d-flex justify-content-start">Logo</div>
+  <div class="col-2 d-flex justify-content-start">
+    <%= link_to "Logo", authenticated_root_path, class: "logo text-decoration-none" %>
+  </div>
   <div class="col-10 d-flex justify-content-end">
     <% if current_admin %>
       <%= link_to 'New Product', new_product_path, class: "btn btn-primary border-0 text-decoration-none" %>

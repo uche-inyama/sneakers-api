@@ -1,6 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
+  skip_before_action :authorized, only: [:create, :new]
 
   def new
+    @user = User.new
   end
 
   def create
