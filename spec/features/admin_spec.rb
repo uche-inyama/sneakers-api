@@ -16,7 +16,7 @@ RSpec.feature "Admins", type: :feature do
     it "successfully signs in & signs out" do
       sign_in admin
       visit products_path
-      expect(page).to have_content('create a product')
+      expect(page).to have_content('sign out')
 
       sign_out admin
       visit unauthenticated_root_path

@@ -33,5 +33,7 @@ module SneakerApi
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.asset_host = 'localhost:3000'
   end
 end

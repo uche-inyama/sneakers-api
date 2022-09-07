@@ -7,10 +7,13 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      render json: @user
-    else
-      render json: :unprocessable_entity
+    respond_to do |format|
+      if @user.save
+        UserMailer.with(user: @user).welcome_email.deliver_later
+        format.json { render json: @user }
+      else
+        format.json { render json: :unprocessable_entity } 
+      end
     end
   end
 
