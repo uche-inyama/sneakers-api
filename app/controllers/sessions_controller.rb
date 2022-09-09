@@ -1,5 +1,4 @@
 class SessionsController < Devise::RegistrationsController
-  # skip_before_action :verify_signed_out_user, only: :destroy
   skip_before_action :authorized, only: [:create]
 
   def new

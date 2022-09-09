@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
+  # devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
   }
+
+  resources :users, only: [:create]
+  post '/sign_in', to: "users#sign_in", as: :users_login
+  delete '/sign_out', to: "users#sign_out", as: :users_sign_out
   
   resources :products do
     resources :samples, shallow: true

@@ -1,7 +1,5 @@
-<%= form_with(model: [product, sample],  html: {'data-turbo' => "false"}) do |form| %>
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image_data %>
-  </div>
-  <%= form.submit %>
+<%= form_with(model: [product, sample],  html: {'data-turbo' => "false", class: "sample-form"}) do |form| %>
+  <%= form.file_field :image_data %>
+  <%= form.submit "upload" %>
 <% end %>
+<%= link_to "cancel", products_path %>

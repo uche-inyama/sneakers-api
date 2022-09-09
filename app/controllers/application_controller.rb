@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
-  before_action :authorized
-
-  # include SessionsHelper
-  # include JsonWebToken
+  # before_action :authorized
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -35,6 +32,10 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def log_out
+    !current_user
   end
 
   def authorized

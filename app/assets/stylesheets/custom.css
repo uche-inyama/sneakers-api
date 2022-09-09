@@ -20,6 +20,26 @@ form[action="/admins/sign_out"] {
   color: #000;
 }
 
+.products-table {
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+}
+
+.product-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 40px !important;
+}
+
+.sample-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+input[value="upload"] {
+  width: 100px;
+  margin-bottom: 5px;
+}
 
 @media(min-width: 700px) {
   .alert {
