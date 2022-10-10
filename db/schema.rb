@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_195115) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_20_133304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "status", ["pending", "processing", "processed", "failed"]
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "stripe_id"
+    t.boolean "payouts_enabled"
+    t.boolean "charges_enabled"
+    t.bigint "admin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_accounts_on_admin_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +38,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_195115) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.json "data"
+    t.string "source"
+    t.text "processing_errors"
+    t.enum "status", default: "pending", null: false, enum_type: "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jwt_denylist", force: :cascade do |t|
@@ -59,5 +82,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_195115) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "accounts", "admins"
   add_foreign_key "samples", "products"
 end

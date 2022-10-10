@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to products_path }
+        format.html { redirect_to products_path, notice: 'Product created successfully' }
         format.json { render json: @product }
       else
         format.json { render json: :unprocessable_entity }
@@ -51,7 +51,8 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_path, notice: 'Product deleted successfully' }
+        format.turbo_stream { flash.now[:notice] = 'Product has been removed.'}
+        format.html { redirect_to products_path, notice: 'Product deleted successfully' }
       format.json { head :no_content }
     end
   end

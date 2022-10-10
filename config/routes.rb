@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:create]
+  namespace :admins do 
+    resources :accounts
+  end
+  
+  post '/webhooks/:sources', to: "webhooks#create"
   post '/sign_in', to: "users#sign_in", as: :users_login
   delete '/sign_out', to: "users#sign_out", as: :users_sign_out
   

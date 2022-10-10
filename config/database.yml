@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: sneaker_api_production
   username: sneaker_api
   password: <%= ENV["SNEAKER_API_DATABASE_PASSWORD"] %>
